@@ -11,10 +11,11 @@ const geocode = (address, callback) => {
       callback('Unable to find location.Try another search', undefined);
     } else {
       const [longitude, latitude] = response.body.features[0].center;
+      const { place_name } = response.body.features[0];
       callback(undefined, {
         latitude: latitude,
         longitude: longitude,
-        location: response.body.features[0].place_name,
+        location: place_name,
       });
     }
   });
